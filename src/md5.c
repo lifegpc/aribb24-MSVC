@@ -333,8 +333,11 @@ void InitMD5( struct md5_s *h )
 {
     md5_init( h );
 }
-
+#ifndef _MSC_VER
 void AddMD5( struct md5_s *restrict h, const void *data, size_t len )
+#else
+void AddMD5( struct md5_s *h, const void *data, size_t len )
+#endif
 {
     md5_write( h, data, len );
 }

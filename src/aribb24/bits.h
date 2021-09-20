@@ -24,7 +24,12 @@
 #ifndef VLC_BITS_H
 #define VLC_BITS_H 1
 
+#ifndef _MSC_VER
 #include <unistd.h>
+#else
+#include <windows.h>
+#define ssize_t __int64
+#endif
 /**
  * \file
  * This file defines functions, structures for handling streams of bits in vlc

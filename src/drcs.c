@@ -24,7 +24,9 @@
 #include <string.h>
 #include <stdint.h>
 #include <stdlib.h>
+#ifndef _MSC_VER
 #include <unistd.h>
+#endif
 #include <fcntl.h>
 #include <math.h>
 #include <ctype.h>
@@ -64,6 +66,15 @@
 #   define S_IWOTH 0
 #   define S_IXOTH 0
 #   define S_IRWXO (S_IROTH | S_IWOTH | S_IXOTH)
+#endif
+
+#define S_IRUSR 0
+#define S_IWUSR 0
+
+#ifdef _MSC_VER
+#include "asprintf.h"
+#include <direct.h>
+#include <io.h>
 #endif
 
 static char* get_arib_data_dir( arib_instance_t *p_instance )
